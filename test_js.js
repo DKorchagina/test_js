@@ -20,24 +20,25 @@ function checkSyntax(str){
     for (let item of str){
         if (input_set.includes(item)){
             stack.push(item)
-        }
-        else if (output_set.indexOf(item)!=-1){
-            if (input_set.indexOf(stack.pop())!=output_set.indexOf(item)){
+        } else if (output_set.indexOf(item) != -1){
+            if (input_set.indexOf(stack.pop()) != output_set.indexOf(item)){
                 return 1;
             }
         }
     }
-    if (stack.length===0){
-        return 0;}
-    else{
+    if (stack.length === 0){
+        return 0;
+    } else {
         return 1;}
 }
 
+//массив обходится поэлементно. Для каждого элемента ищется в списке число, не хватающее до суммы с 
+//заданным параметром. Если такое есть, то индексы записываются в массив с результатом, цикл завершается
 function findSumOfMass(mass, a){
     let result = [];
     for (let [i, item] of mass.entries()){
         let cur = mass.indexOf(a-item);
-        if (cur!=-1){
+        if (cur != -1){
             result.push(i);
             result.push(cur);
             break;
